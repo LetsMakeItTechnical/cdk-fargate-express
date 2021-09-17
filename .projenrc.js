@@ -39,16 +39,16 @@ const project = new AwsCdkConstructLibrary({
     '@aws-cdk/aws-ecs',
     '@aws-cdk/aws-ecs-patterns',
   ],
-  minNodeVersion: '12.20.0',
   python: {
     distName: 'cdk-fargate-express',
     module: 'cd_fargate_express',
   },
 });
 
-// project.package.addField('resolutions', {
-//   'trim-newlines': '3.0.1',
-// });
+project.package.addField('resolutions', {
+  'pac-resolver': '^5.0.0',
+  'set-value': '^4.0.1',
+});
 
 const common_exclude = ['cdk.out', 'cdk.context.json', 'images', 'yarn-error.log'];
 project.npmignore.exclude(...common_exclude);
