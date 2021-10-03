@@ -1,6 +1,5 @@
 const {
   AwsCdkConstructLibrary,
-  DependenciesUpgradeMechanism,
   DevEnvironmentDockerImage,
   Gitpod,
 } = require('projen');
@@ -16,13 +15,13 @@ const project = new AwsCdkConstructLibrary({
   authorName: 'Pahud Hsieh',
   authorEmail: 'pahudnet@gmail.com',
   cdkVersion: '1.79.0',
-  depsUpgrade: DependenciesUpgradeMechanism.githubWorkflow({
+  depsUpgradeOptions: {
     ignoreProjen: false,
     workflowOptions: {
       labels: ['auto-approve', 'auto-merge'],
       secret: AUTOMATION_TOKEN,
     },
-  }),
+  },
   autoApproveOptions: {
     secret: 'GITHUB_TOKEN',
     allowedUsernames: ['pahud', 'cdk-automation'],
